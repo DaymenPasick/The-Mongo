@@ -8,6 +8,7 @@ const {
   getSingleUser,
   createUser,
   updateUser,
+  deleteUser
 } = require('../../controllers/userController');
 
 
@@ -19,7 +20,8 @@ router.route('/')
 // route path for getting a single user by their id
 router.route('/:userId')
   .get(getSingleUser)
-  .put(updateUser);
+  .put(updateUser)
+  .delete(deleteUser);
 
 //need to add put and delete by id routes to 
 //update and delete users by their id

@@ -58,6 +58,19 @@ module.exports = {
     }
   },
 
+  async deleteUser(req, res) {
+    try {
+      const user = await User.findOneAndRemove({ _id: req.params.userId });
+
+      if (!user) {
+        return res.status(404).json({ message: 'No user found having this id!' });
+      }
+
+      res.json({ message: 'Specified user has been deleted!' });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
 
 
 //need to method for add put and delete by id routes to 
