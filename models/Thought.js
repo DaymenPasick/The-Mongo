@@ -32,7 +32,6 @@ const reactionSchema = new Schema (
         default: Date.now,
         //need getter method for formatting upon query
       },
-
  }
 )
 
@@ -67,10 +66,9 @@ const thoughtSchema = new Schema(
 
       //for all reactions associated with their respective thought
       reactions : [reactionSchema]
-
     },
     {
-      //added this in case we do want to include virtuals, but may not need
+      //allows for displaying of virtuals
       toJSON: {
         virtuals: true,
       },
@@ -90,7 +88,3 @@ thoughtSchema
   const Thought = model('thought', thoughtSchema);
 
   module.exports = Thought;
-
-  //need getter method for formatting upon query
-  //need to add virtual of reactionCount that retrieves length of the thoughts's reactions array
-  

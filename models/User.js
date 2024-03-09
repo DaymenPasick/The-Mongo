@@ -1,7 +1,8 @@
 //this will allow use of mongoos's Schema class and model
 const { Schema, model } = require('mongoose');
 
-
+//function used within userSchema.email to validate emails
+//before users are created
 var validateEmail = function(email) {
   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return re.test(email)
@@ -54,7 +55,6 @@ const userSchema = new Schema(
   );
 
 
-
 userSchema
    //virtual will show length of friends in userSchema.friends array
   .virtual('friendCount')
@@ -62,10 +62,7 @@ userSchema
     return `${this.friends.length}`;
   })
 
-
   //initialising User model
   const User = model('user', userSchema);
 
   module.exports = User;
-
-  //need to add virtual of friendCount that retrieves length of the user's friends array
