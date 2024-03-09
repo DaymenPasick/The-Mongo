@@ -1,8 +1,6 @@
 const router = require('express').Router();
 
-
-//this const group points to our thought route methods
-//within the controller directory
+//methods defined in thoughtController.js'
 const {
   getThoughts,
   getSingleThought,
@@ -13,25 +11,24 @@ const {
   removeReaction,
 } = require('../../controllers/thoughtController');
 
-// /api/thoughts
+
+//Route Example = http://localhost:3001/api/thoughts
 router.route('/')
   .get(getThoughts)
   .post(createThought);
 
-// /api/thoughts/:thoughtId
-router
-//all of these are defined in controllers
-  .route('/:thoughtId')
+
+//Route Example = http://localhost:3001/api/thoughts/:thoughtId
+router.route('/:thoughtId')
   .get(getSingleThought)
   .put(updateThought)
   .delete(deleteThought);
 
-// /api/thoughts/:thoughtId/reactions
+//Route Example = http://localhost:3001/api/thoughts/:thoughtId/reactions
 router.route('/:thoughtId/reactions')
-  // .put(addReaction);
   .post(addReaction);
 
-// /api/thoughts/:thoughtId/reactions/:reactionId
+//Route Example = http://localhost:3001/api/thoughts/:thoughtId/reactions/:reactionId
 router.route('/:thoughtId/reactions/:reactionId')
   .delete(removeReaction);
 
