@@ -58,6 +58,7 @@ module.exports = {
     }
   },
 
+  //delete user by their id
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndRemove({ _id: req.params.userId });
@@ -72,11 +73,28 @@ module.exports = {
     }
   },
 
+  //find a user by their id and add a friend to that user
+  //method works, but would like a way to see friend's
+  //name rather than ObjectId in array return
+  async addFriendToUser(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: {friends: req.body } },
+        { runValidators: true, new: true }
+      );
 
-//need to method for add put and delete by id routes to 
-//update and delete users by their id
+      if (!user) {
+        return res.status(404).json({ message: 'No user found having this id!' });
+      }
 
-//need post method to add new friend to user friend list
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+
 //need delete method to remove friend for users friends list
 
 };

@@ -8,7 +8,8 @@ const {
   getSingleUser,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  addFriendToUser,
 } = require('../../controllers/userController');
 
 
@@ -17,14 +18,18 @@ router.route('/')
   .get(getUsers)
   .post(createUser);
 
-// route path for getting a single user by their id
+//route pathing when working with a user's id
 router.route('/:userId')
   .get(getSingleUser)
   .put(updateUser)
   .delete(deleteUser);
 
-//need to add put and delete by id routes to 
-//update and delete users by their id
+
+//route path to add a friend to a user 
+router.route('/:userId/friends')
+  .post(addFriendToUser);
+
+
 
 //need post method to add new friend to user friend list
 //need delete method to remove friend for users friends list
