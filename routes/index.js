@@ -1,3 +1,4 @@
+//this will point any route /api to the api directory
 const router = require('express').Router();
 const apiRoutes = require('./api');
 
