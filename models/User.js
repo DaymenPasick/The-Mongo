@@ -18,6 +18,10 @@ const userSchema = new Schema(
         required:true,
         //this will make sure no emails are the same
         unique:true,
+        validate: {
+          validator: () => Promise.resolve(false),
+          message:'Not a valid email'
+        }
         //needs validation for matching email adress format
       },
 
