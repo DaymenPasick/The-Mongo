@@ -25,8 +25,6 @@ module.exports = {
   },
 
   // create a new thought
-  //works in terms of successful, but thought doesn't
-  //show up under user
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);

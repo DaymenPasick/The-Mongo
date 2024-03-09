@@ -21,7 +21,7 @@ router.route('/')
 // /api/thoughts/:thoughtId
 router
 //all of these are defined in controllers
-  .route('/:ThoughtId')
+  .route('/:thoughtId')
   .get(getSingleThought)
   .put(updateThought)
   .delete(deleteThought);
