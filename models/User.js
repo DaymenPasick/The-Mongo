@@ -55,7 +55,6 @@ const userSchema = new Schema(
 
 
 
-
 userSchema
    //virtual will show length of friends in userSchema.friends array
   .virtual('friendCount')

@@ -68,8 +68,6 @@ const thoughtSchema = new Schema(
       //for all reactions associated with their respective thought
       reactions : [reactionSchema]
 
-
-
     },
     {
       //added this in case we do want to include virtuals, but may not need
@@ -79,6 +77,14 @@ const thoughtSchema = new Schema(
       id: false,
     }
   );
+
+
+thoughtSchema
+   //virtual will show length of reactions in thoughtSchema.reactions array
+  .virtual('reactionCount')
+  .get(function () {
+    return `${this.reactions.length}`;
+  })
   
   //initialising Thought model
   const Thought = model('thought', thoughtSchema);
