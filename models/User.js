@@ -12,9 +12,12 @@ const userSchema = new Schema(
         trim:true,
       },
       //formatting for email
-      last: {
+      email: {
         type: String,
         required:true,
+        //this will make sure no emails are the same
+        unique:true,
+        //needs validation for matching email adress format
       },
       age: Number,
       //creating association with thoughts Schema
