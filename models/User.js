@@ -5,12 +5,13 @@ const { Schema, model } = require('mongoose');
 // Schema for User model
 const userSchema = new Schema(
     {
-      //changed in class
-      first: {
+      //formatting for username
+      username: {
         type: String,
         required:true,
+        trim:true,
       },
-      //changed in class
+      //formatting for email
       last: {
         type: String,
         required:true,
