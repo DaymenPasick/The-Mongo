@@ -2,7 +2,7 @@
   "name": "THE-MONGO",
   "version": "1.0.1",
   "description": "An Api Social Network Solution",
-  "main": "index.js",
+  "main": "server.js",
   "license": "MIT",
   "scripts": {
     "start": "node index",
