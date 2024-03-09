@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 
 
 // Schema for User model
-const userSchema = new Schema(
+const thoughtSchema = new Schema(
     {
       //formatting for username
       username: {
@@ -46,5 +46,9 @@ const userSchema = new Schema(
     }
   );
   
+  const Thought = model('thought', thoughtSchema);
+
+  module.exports = Thought;
+
   //need to do email validation
   //need to add virtual of friendCount that retrieves length of the user's friends array
