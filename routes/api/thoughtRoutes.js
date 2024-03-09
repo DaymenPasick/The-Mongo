@@ -12,6 +12,9 @@ const {
 } = require('../../controllers/thoughtController');
 
 
+//example ObjectId "65ec9b61584f02271f809869"
+
+
 //Route Example = http://localhost:3001/api/thoughts
 router.route('/')
   .get(getThoughts)
