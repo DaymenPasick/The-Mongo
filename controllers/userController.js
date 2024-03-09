@@ -80,11 +80,33 @@ module.exports = {
     try {
       const user = await User.findOneAndUpdate(
         //initial route needs user id
-        //req.body needs id of friend(user) being added
+        //req.body needs id of user being added as friend
         { _id: req.params.userId },
         { $addToSet: {friends: req.body } },
         { runValidators: true, new: true }
       );
+
+      if (!user) {
+        return res.status(404).json({ message: 'No user found having this id!' });
+      }
+
+      res.json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
+
+  async removeFriendFromUser(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        //initial route needs user id
+        //req.body needs id of friend being deleted
+        { _id: req.params.userId },
+        { $pull: { 'friends.ObjectId':  req.params.friendId  } },
+        // { $pull: { friends: { friendId: req.params.friendId } } },
+        { runValidators: true, new: true }
+      )
 
       if (!user) {
         return res.status(404).json({ message: 'No user found having this id!' });
