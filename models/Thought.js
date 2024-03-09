@@ -30,7 +30,9 @@ const reactionSchema = new Schema (
       createdAt: {
         type: Date,
         default: Date.now,
-        //need getter method for formatting upon query
+        get: (date) => {
+          if (date) return date.toISOString().split("T") [0];
+        },
       },
  }
 )
@@ -53,7 +55,9 @@ const thoughtSchema = new Schema(
       createdAt: {
         type: Date,
         default: Date.now,
-        //need getter method for formatting upon query
+        get: (date) => {
+          if (date) return date.toISOString().split("T") [0];
+        },
       },
 
       //for username associated with thought
