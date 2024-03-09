@@ -2,9 +2,18 @@
 const { Schema, model } = require('mongoose');
 
 
+//for reference to use in thoughtSchema
+const reactionSchema = new Schema (
+
+
+
+)
+
+
 // Schema for User model
 const thoughtSchema = new Schema(
-    {
+    {   
+
       //for thoughts
       thoughtText: {
         type: String,
@@ -29,13 +38,11 @@ const thoughtSchema = new Schema(
             required:true,
         },
 
-      //creates self-association with User model
-      friends: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'user',
-        },
-      ],
+
+      reaction : []
+
+
+
     },
     {
       //added this in case we do want to include virtuals, but may not need
@@ -46,6 +53,7 @@ const thoughtSchema = new Schema(
     }
   );
   
+  //initialising Thought model
   const Thought = model('thought', thoughtSchema);
 
   module.exports = Thought;
