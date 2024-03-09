@@ -6,6 +6,8 @@ const { Schema, model } = require('mongoose');
 const reactionSchema = new Schema (
     {
     //will give each reaction an objectId when created
+    //commented out because mongo already makes new id by default
+    //but code is here if desired! Per client request
     // reactionId: {
     //     type: Schema.Types.ObjectId,
     //     default: () => new Types.ObjectId(),
