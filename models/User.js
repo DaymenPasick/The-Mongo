@@ -45,13 +45,24 @@ const userSchema = new Schema(
       ],
     },
     {
-      //added this in case we do want to include virtuals, but may not need
+      //allows for displaying of virtuals 
       toJSON: {
         virtuals: true,
       },
       id: false,
     }
   );
+
+
+
+
+userSchema
+   //virtual will show length of friends in userSchema.friends array
+  .virtual('friendCount')
+  .get(function () {
+    return `${this.friends.length}`;
+  })
+
 
   //initialising User model
   const User = model('user', userSchema);
