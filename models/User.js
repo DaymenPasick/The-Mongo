@@ -1,8 +1,8 @@
-//this will allow us to use mongoos's Schema class and model
+//this will allow use of mongoos's Schema class and model
 const { Schema, model } = require('mongoose');
 
 
-// Schema for User model
+//Schema for User model
 const userSchema = new Schema(
     {
       //formatting for username
@@ -53,5 +53,3 @@ const userSchema = new Schema(
 
   //need to do email validation
   //need to add virtual of friendCount that retrieves length of the user's friends array
-
-  //route test 1, 2

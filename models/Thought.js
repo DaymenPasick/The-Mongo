@@ -1,16 +1,17 @@
-//this will allow us to use mongoos's Schema class and model
+//this will allow the use of mongoos's Schema class and model
 const { Schema, model, Types } = require('mongoose');
 
 
 //for reference to use in thoughtSchema
 const reactionSchema = new Schema (
     {
+    //will be used for manapulation of reactions  
     reactionId: {
         type: Schema.Types.ObjectId,
         default: () => new Types.ObjectId(),
     },
 
-
+    //for main reaction text
     reactionBody: {
         type: String,
         required:true,
@@ -19,6 +20,7 @@ const reactionSchema = new Schema (
 
     },
 
+    //for username associated with reaction
     username: {
         type: String,
         required: true,
@@ -35,11 +37,11 @@ const reactionSchema = new Schema (
 )
 
 
-// Schema for User model
+//Schema for Thought model
 const thoughtSchema = new Schema(
     {   
 
-      //for thoughts
+      //for main text of thoughts
       thoughtText: {
         type: String,
         required:true,
@@ -55,8 +57,7 @@ const thoughtSchema = new Schema(
         //need getter method for formatting upon query
       },
 
-      //this will reference the user that created the thought
-      //may need more code to work properly
+      //for username associated with thought
       username: 
         {
             type: String,
@@ -64,7 +65,7 @@ const thoughtSchema = new Schema(
             ref: 'user',
         },
 
-
+      //for all reactions associated with their respective thought
       reactions : [reactionSchema]
 
 
@@ -85,6 +86,5 @@ const thoughtSchema = new Schema(
   module.exports = Thought;
 
   //need getter method for formatting upon query
-  //may need more code for proper user-thought reference
   //need to add virtual of reactionCount that retrieves length of the thoughts's reactions array
   
