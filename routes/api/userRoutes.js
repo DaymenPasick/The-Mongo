@@ -10,7 +10,7 @@ const {
 } = require('../../controllers/userController');
 
 
-//route path for get all users and create users
+//route path for get users and create users
 router.route('/')
   .get(getUsers)
   .post(createUser);
@@ -21,6 +21,9 @@ router.route('/:userId')
 
 //need to add put and delete by id routes to 
 //update and delete users by their id
+
+//need post method to add new friend to user friend list
+//need delete method to remove friend for users friends list
 
 
  
