@@ -104,7 +104,6 @@ module.exports = {
         //req.body needs id of friend being deleted
         { _id: req.params.userId },
         { $pull: { friends:  req.params.friendId  } }, 
-        // { $pull: { friends: { friendId: req.params.friendId } } },
         { runValidators: true, new: true }
       )
 
@@ -116,8 +115,4 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
-
-//need delete method to remove friend for users friends list
-
 };

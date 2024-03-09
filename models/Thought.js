@@ -62,6 +62,7 @@ const thoughtSchema = new Schema(
         {
             type: String,
             required:true,
+            ref: 'user',
         },
 
 

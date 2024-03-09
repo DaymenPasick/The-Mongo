@@ -12,10 +12,10 @@ module.exports = {
   //26 - 44 for creating/deleteing friendship or creating
   async getSingleThought(req, res) {
     try {
-      const thought = await Though.findOne({ _id: req.params.thoughtId })
+      const thought = await Thought.findOne({ _id: req.params.thoughtId })
 
       if (!thought) {
-        return res.status(404).json({ message: 'could not find a thought with that ID' });
+        return res.status(404).json({ message: 'No thought found having this ID' });
       }
 
       res.json(thought);
@@ -25,6 +25,8 @@ module.exports = {
   },
 
   // create a new thought
+  //works in terms of successful, but thought doesn't
+  //show up under user
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
