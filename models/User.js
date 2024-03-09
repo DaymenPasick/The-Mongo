@@ -45,3 +45,6 @@ const userSchema = new Schema(
       id: false,
     }
   );
+  
+  //need to do email validation
+  //need to add virtual of friendCount that retrieves length of the user's friends array
