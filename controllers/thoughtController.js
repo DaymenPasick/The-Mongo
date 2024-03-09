@@ -48,6 +48,12 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  //will update thoughts properly BUT
+  //if thought was created without a user affiliated
+  //updating thought with user info WONT
+  //affiliate that thought with the user.
+  //may fix if time!
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -66,6 +72,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
   async deleteThought(req, res) {
     try {
       const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
@@ -83,7 +90,7 @@ module.exports = {
       if (!user) {
         return res
           .status(404)
-          .json({ message: 'Thought created but no user found having this id!' });
+          .json({ message: 'Thought deleted but no user found having this id!' });
       }
 
       res.json({ message: 'Thought has been deleted!' });
@@ -130,3 +137,4 @@ module.exports = {
 };
 
 
+//test 2
