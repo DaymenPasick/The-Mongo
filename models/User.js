@@ -11,6 +11,7 @@ const userSchema = new Schema(
         required:true,
         trim:true,
       },
+
       //formatting for email
       email: {
         type: String,
@@ -19,12 +20,20 @@ const userSchema = new Schema(
         unique:true,
         //needs validation for matching email adress format
       },
-      age: Number,
-      //creating association with thoughts Schema
+
+      //creates association with Thought model
       thoughts: [
         {
           type: Schema.Types.ObjectId,
           ref: 'thought',
+        },
+      ],
+
+      //creates self-association with User model
+      friends: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'user',
         },
       ],
     },
