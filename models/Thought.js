@@ -6,10 +6,10 @@ const { Schema, model } = require('mongoose');
 const reactionSchema = new Schema (
     {
     //will give each reaction an objectId when created
-    reactionId: {
-        type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId(),
-    },
+    // reactionId: {
+    //     type: Schema.Types.ObjectId,
+    //     default: () => new Types.ObjectId(),
+    // },
 
 
     reactionBody: {
@@ -66,7 +66,7 @@ const thoughtSchema = new Schema(
         },
 
 
-      reaction : [reactionSchema]
+      reactions : [reactionSchema]
 
 
 

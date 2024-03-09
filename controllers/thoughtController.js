@@ -9,7 +9,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  //26 - 44 for creating/deleteing friendship or creating
+  
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.findOne({ _id: req.params.thoughtId })
@@ -111,9 +111,10 @@ module.exports = {
         return res.status(404).json({ message: 'No thought found having this id!' });
       }
 
-      res.json(reaction);
+      res.json(thought);
     } catch (err) {
       res.status(500).json(err);
+      console.log(err);
     }
   },
   // Remove reaction 
@@ -129,7 +130,7 @@ module.exports = {
         return res.status(404).json({ message: 'No thought found having this id!' });
       }
 
-      res.json(reaction);
+      res.json(thought);
     } catch (err) {
       res.status(500).json(err);
     }
