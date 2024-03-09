@@ -1,4 +1,4 @@
-//this file will direct all paths starting with api/
+//this file will direct all paths starting with /api
 const router = require('express').Router();
 const thoughtRoutes = require('./thoughtRoutes');
 const userRoutes = require('./userRoutes');
