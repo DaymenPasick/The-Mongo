@@ -1,6 +1,11 @@
 //this file contains the methods behind for user api routes
 const User = require('../models/User');
 
+
+
+
+
+
 module.exports = {
   //method to find all users
   async getUsers(req, res) {

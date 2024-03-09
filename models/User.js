@@ -2,6 +2,11 @@
 const { Schema, model } = require('mongoose');
 
 
+var validateEmail = function(email) {
+  var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return re.test(email)
+};
+
 //Schema for User model
 const userSchema = new Schema(
     {
@@ -15,14 +20,12 @@ const userSchema = new Schema(
       //formatting for email
       email: {
         type: String,
-        required:true,
         //this will make sure no emails are the same
         unique:true,
-        validate: {
-          validator: () => Promise.resolve(false),
-          message:'Not a valid email'
-        }
-        //needs validation for matching email adress format
+        //following 3 lines will test for valid email convention
+        required: 'Email address is required',
+        validate: [validateEmail, 'Please fill a valid email address'],
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
       },
 
       //creates association with Thought model
@@ -55,5 +58,4 @@ const userSchema = new Schema(
 
   module.exports = User;
 
-  //need to do email validation
   //need to add virtual of friendCount that retrieves length of the user's friends array
