@@ -52,4 +52,5 @@ const thoughtSchema = new Schema(
 
   //need getter method for formatting upon query
   //may need more code for proper user-thought reference
+  //need to add virtual of reactionCount that retrieves length of the thoughts's reactions array
   
