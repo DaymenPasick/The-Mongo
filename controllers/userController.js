@@ -79,6 +79,8 @@ module.exports = {
   async addFriendToUser(req, res) {
     try {
       const user = await User.findOneAndUpdate(
+        //initial route needs user id
+        //req.body needs id of friend(user) being added
         { _id: req.params.userId },
         { $addToSet: {friends: req.body } },
         { runValidators: true, new: true }
