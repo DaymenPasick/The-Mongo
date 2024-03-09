@@ -1,6 +1,7 @@
 const { Thought, User } = require('../models');
 
 module.exports = {
+  //method for viewing all thoughts
   async getThoughts(req, res) {
     try {
       const thoughts = await Thought.find();
@@ -10,6 +11,7 @@ module.exports = {
     }
   },
   
+  //method for viewing a single thought
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.findOne({ _id: req.params.thoughtId })
@@ -24,7 +26,7 @@ module.exports = {
     }
   },
 
-  // create a new thought
+  //method to create a new thought
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
@@ -49,11 +51,7 @@ module.exports = {
     }
   },
 
-  //will update thoughts properly BUT
-  //if thought was created without a user affiliated
-  //updating thought with user info WONT
-  //affiliate that thought with the user.
-  //may fix if time!
+  //method to update a thought
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -73,6 +71,7 @@ module.exports = {
     }
   },
 
+  //method to delete a thought
   async deleteThought(req, res) {
     try {
       const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
@@ -98,7 +97,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Add a reaction
+
+  //method to add a reaction (to a thought)
   async addReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -117,7 +117,8 @@ module.exports = {
       console.log(err);
     }
   },
-  // Remove reaction 
+
+  //method to remove a reaction (froma thought)
   async removeReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
