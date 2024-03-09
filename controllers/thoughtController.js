@@ -34,7 +34,7 @@ module.exports = {
         //this will requre the user:id to be included
         //in the post req body
         { _id: req.body.userId },
-        { $addToSet: { thought: thought._id } },
+        { $addToSet: { thoughts: thought._id } },
         { new: true }
       );
 
