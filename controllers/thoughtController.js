@@ -1,3 +1,4 @@
+//this file contains methods for our thought and reaction routes
 const { Thought, User } = require('../models');
 
 module.exports = {

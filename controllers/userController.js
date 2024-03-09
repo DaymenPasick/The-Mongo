@@ -1,9 +1,8 @@
-//this will will contain the logic/methods behind
-//our user api routes
+//this file contains the methods behind for user api routes
 const User = require('../models/User');
 
 module.exports = {
-  //find all users
+  //method to find all users
   async getUsers(req, res) {
     try {
       const users = await User.find();
@@ -12,7 +11,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  //find a single user by their id 
+  
+  //method to find a single user by their id 
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId })
@@ -28,7 +28,7 @@ module.exports = {
     }
   },
 
-  //create a new user
+  //method to create a new user
   async createUser(req, res) {
     try {
       const dbUserData = await User.create(req.body);
@@ -38,7 +38,7 @@ module.exports = {
     }
   },
 
-  //update user by their id
+  //method to update a user by their id
   async updateUser(req, res) {
     try {
       const user = await User.findOneAndUpdate(
@@ -58,7 +58,7 @@ module.exports = {
     }
   },
 
-  //delete user by their id
+  //method to delete a user
   async deleteUser(req, res) {
     try {
       const user = await User.findOneAndRemove({ _id: req.params.userId });
@@ -73,9 +73,7 @@ module.exports = {
     }
   },
 
-  //find a user by their id and add a friend to that user
-  //method works, but would like a way to see friend's
-  //name rather than ObjectId in array return
+  //method to add a new friend(to a user)
   async addFriendToUser(req, res) {
     try {
       const user = await User.findOneAndUpdate(
