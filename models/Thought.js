@@ -5,29 +5,29 @@ const { Schema, model } = require('mongoose');
 // Schema for User model
 const thoughtSchema = new Schema(
     {
-      //formatting for username
-      username: {
+      //for thoughts
+      thoughtText: {
         type: String,
         required:true,
-        trim:true,
+        //will set length limit of 1~280 chars
+        minLength:1,
+        maxLength:280,
       },
 
-      //formatting for email
-      email: {
-        type: String,
-        required:true,
-        //this will make sure no emails are the same
-        unique:true,
-        //needs validation for matching email adress format
+      //formatting for timestamp of creation
+      createdAt: {
+        type: Date,
+        default: Date.now,
+        //need getter method for formatting upon query
       },
 
-      //creates association with Thought model
-      thoughts: [
+      //this will reference the user that created the thought
+      //may need more code to work properly
+      username: 
         {
-          type: Schema.Types.ObjectId,
-          ref: 'thought',
+            type: String,
+            required:true,
         },
-      ],
 
       //creates self-association with User model
       friends: [
@@ -50,5 +50,6 @@ const thoughtSchema = new Schema(
 
   module.exports = Thought;
 
-  //need to do email validation
-  //need to add virtual of friendCount that retrieves length of the user's friends array
+  //need getter method for formatting upon query
+  //may need more code for proper user-thought reference
+  
